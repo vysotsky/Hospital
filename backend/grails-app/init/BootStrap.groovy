@@ -1,6 +1,10 @@
+import com.cityhospital.backend.Doctor
+import com.cityhospital.backend.DoctorCategory
 import com.cityhospital.backend.HospitalInfo
 
 class BootStrap {
+
+    def randomUsersService
 
     def init = { servletContext ->
         new HospitalInfo(
@@ -11,6 +15,18 @@ class BootStrap {
                         "\n" +
                         "Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source."
         ).save(false)
+        def categories = ["Cardiology", "Dietology", "Hematology"]
+        categories.each {
+            def category = new DoctorCategory(name: it).save(false)
+            for (i in 0..<10) {
+                def randomUser = randomUsersService.fetchNewRandomUser()
+                new Doctor(
+                        name: randomUser.name,
+                        picture: randomUser.picture,
+                        category: category
+                ).save(false)
+            }
+        }
     }
     def destroy = {
     }
