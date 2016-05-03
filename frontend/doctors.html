@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+
+    <title>Title</title>
+
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">CITY HOSPITAL</a>
+        </div>
+        <div class="navbar-collapse collapse navbar-right">
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="contact.html">CONTACT US</a></li>
+                <li><a href="comments.html">COMMENTS</a></li>
+                <li><a href="achievements.html">ACHIEVEMENTS</a></li>
+                <li class="active"><a href="doctors.html">OUR DOCTORS</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="blue">
+    <div class="container">
+        <div class="row">
+            <h3>Doctors.</h3>
+        </div>
+    </div>
+</div>
+
+<div id="doctorwrap">
+    <div class="doctor-centered">
+        <h3>Our Personnel.</h3>
+
+        <div class="recentitems doctor">
+
+            <div class="doctor-item">
+                <div class="tpl6">
+                    <img class="doctor-image" src="assets/img/userpic.png" alt="">
+                    <h4>Doctor name</h4>
+                </div>
+            </div>
+
+            <div class="doctor-item">
+                <div class="tpl6">
+                    <img class="doctor-image" src="assets/img/userpic.png" alt="">
+                    <h4>Doctor name</h4>
+                </div>
+            </div>
+
+            <div class="doctor-item">
+                <div class="tpl6">
+                    <img class="doctor-image" src="assets/img/userpic.png" alt="">
+                    <h4>Doctor name</h4>
+                </div>
+            </div>
+
+            <div class="doctor-item">
+                <div class="tpl6">
+                    <img class="doctor-image" src="assets/img/userpic.png" alt="">
+                    <h4>Doctor name</h4>
+                </div>
+            </div>
+
+            <div class="doctor-item">
+                <div class="tpl6">
+                    <img class="doctor-image" src="assets/img/userpic.png" alt="">
+                    <h4>Doctor name</h4>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="footerwrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h4>About</h4>
+                <div class="hline-w"></div>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s.</p>
+            </div>
+            <div class="col-lg-6">
+                <h4>Our Bunker</h4>
+                <div class="hline-w"></div>
+                <p>
+                    Some Ave, 987,<br/>
+                    23890, New York,<br/>
+                    United States.<br/>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================== -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/retina-1.1.0.js"></script>
+<script src="assets/js/jquery.hoverdir.js"></script>
+<script src="assets/js/jquery.hoverex.min.js"></script>
+<script src="assets/js/jquery.isotope.min.js"></script>
+<script src="assets/js/custom.js"></script>
+
+
+<script>
+    (function ($) {
+        "use strict";
+        var $container = $('.doctor'),
+                $items = $container.find('.doctor-item'),
+                doctorLayout = 'fitRows';
+
+        if ($container.hasClass('doctor-centered')) {
+            doctorLayout = 'masonry';
+        }
+
+        $container.isotope({
+            filter: '*',
+            animationEngine: 'best-available',
+            layoutMode: doctorLayout,
+            animationOptions: {
+                duration: 750,
+                easing: 'linear',
+                queue: false
+            },
+            masonry: {}
+        }, refreshWaypoints());
+
+        function refreshWaypoints() {
+            setTimeout(function () {
+            }, 1000);
+        }
+
+        $('nav.doctor-filter ul a').on('click', function () {
+            var selector = $(this).attr('data-filter');
+            $container.isotope({filter: selector}, refreshWaypoints());
+            $('nav.doctor-filter ul a').removeClass('active');
+            $(this).addClass('active');
+            return false;
+        });
+
+        function getColumnNumber() {
+            var winWidth = $(window).width(),
+                    columnNumber = 1;
+
+            if (winWidth > 1200) {
+                columnNumber = 5;
+            } else if (winWidth > 950) {
+                columnNumber = 4;
+            } else if (winWidth > 600) {
+                columnNumber = 3;
+            } else if (winWidth > 400) {
+                columnNumber = 2;
+            } else if (winWidth > 250) {
+                columnNumber = 1;
+            }
+            return columnNumber;
+        }
+
+        function setColumns() {
+            var winWidth = $(window).width(),
+                    columnNumber = getColumnNumber(),
+                    itemWidth = Math.floor(winWidth / columnNumber);
+
+            $container.find('.doctor-item').each(function () {
+                $(this).css({
+                    width: itemWidth + 'px'
+                });
+            });
+        }
+
+        function setDoctor() {
+            setColumns();
+            $container.isotope('reLayout');
+        }
+
+        $container.imagesLoaded(function () {
+            setDoctor();
+        });
+
+        $(window).on('resize', function () {
+            setDoctor();
+        });
+    })(jQuery);
+</script>
+</body>
+</html>
