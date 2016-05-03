@@ -8,15 +8,13 @@ import com.cityhospital.backend.base.AbstractController
 class DoctorsController extends AbstractController {
 
     def index() {
-        def resultList = []
-        Doctor.findAll().each {
-            resultList << [id          : it.id,
-                           name        : it.name,
-                           picture     : it.picture,
-                           categoryId  : it.category.id,
-                           categoryName: it.category.name]
+        json Doctor.all.collect {
+            [id          : it.id,
+             name        : it.name,
+             picture     : it.picture,
+             categoryId  : it.category.id,
+             categoryName: it.category.name]
         }
-        render(contentType: "text/json") { resultList }
     }
 
 }

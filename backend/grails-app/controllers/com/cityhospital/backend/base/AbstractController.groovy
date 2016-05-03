@@ -5,22 +5,13 @@ package com.cityhospital.backend.base
  */
 abstract class AbstractController {
 
-    def json(int status, Closure closure) {
+    def json(int status, Object source) {
         response.status = status
-        render(contentType: "text/json") { closure() }
+        render(contentType: "text/json") { source }
     }
 
-    def json(Closure closure) {
-        json status: 200, closure: closure
-    }
-
-    def json(int status, Map map) {
-        response.status = status
-        render(contentType: "text/json") { map }
-    }
-
-    def json(Map map) {
-        json status: 200, map: map
+    def json(Object source) {
+        json(200, source)
     }
 
 }

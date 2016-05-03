@@ -9,10 +9,10 @@ class AboutController extends AbstractController {
 
     def index() {
         def info = HospitalInfo.aboutHospital.get()
-        json(200, [
+        json status: 200, source: [
                 title: info.title,
                 about: info.about
-        ])
+        ]
     }
 
 }
