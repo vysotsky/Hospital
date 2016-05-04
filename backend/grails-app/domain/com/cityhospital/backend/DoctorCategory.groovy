@@ -7,4 +7,5 @@ class DoctorCategory {
 
     static constraints = {
     }
+
 }

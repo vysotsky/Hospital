@@ -5,12 +5,12 @@ package com.cityhospital.backend.base
  */
 abstract class AbstractController {
 
-    def json(int status, Object source) {
+    def json(int status, source) {
         response.status = status
         render(contentType: "text/json") { source }
     }
 
-    def json(Object source) {
+    def json(source) {
         json(200, source)
     }
 
