@@ -24,7 +24,6 @@ class AccessInterceptor {
 
     boolean after() { true }
 
-    void afterView() {
-    }
+    void afterView() { }
 
 }
