@@ -2,6 +2,9 @@ package com.cityhospital.backend
 
 import com.cityhospital.backend.base.AbstractController
 
+/**
+ * Created by Slawa on 04.05.2016.
+ */
 class ContactController extends AbstractController {
 
     static allowedMethods = ['PUT']

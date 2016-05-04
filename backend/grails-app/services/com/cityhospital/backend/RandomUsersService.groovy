@@ -2,6 +2,9 @@ package com.cityhospital.backend
 
 import grails.converters.JSON
 
+/**
+ * Created by Slawa on 03.05.2016.
+ */
 class RandomUsersService {
 
     static transactional = true
