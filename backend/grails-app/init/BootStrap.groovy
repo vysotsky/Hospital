@@ -1,3 +1,4 @@
+import com.cityhospital.backend.Comment
 import com.cityhospital.backend.Doctor
 import com.cityhospital.backend.DoctorCategory
 import com.cityhospital.backend.HospitalInfo
@@ -27,6 +28,12 @@ class BootStrap {
                 ).save(false)
             }
         }
+        new Comment(
+                username: "Vlad",
+                picture: randomUsersService.fetchNewRandomUser().picture,
+                title: "Awesome title",
+                body: "A lot of text inside this comment!"
+        ).save(false)
     }
     def destroy = {
     }
