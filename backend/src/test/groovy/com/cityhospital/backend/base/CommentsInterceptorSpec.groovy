@@ -1,6 +1,6 @@
 package com.cityhospital.backend.base
 
-import com.cityhospital.backend.AccessInterceptor
+
 import grails.test.mixin.TestFor
 import spock.lang.Specification
 

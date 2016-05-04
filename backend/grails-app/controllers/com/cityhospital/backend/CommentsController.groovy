@@ -9,8 +9,6 @@ class CommentsController extends AbstractController {
 
     def randomUsersService
 
-    static allowedMethods = ['GET', 'PUT']
-
     def index() {
         json Comment.all.collect {
             [username: it.username,

@@ -85,23 +85,23 @@
                 </div>
             </div>
             <div class="form-bottom">
-                <form role="form" action="" method="post" class="registration-form">
+                <form role="form" class="registration-form">
                     <div class="form-group">
                         <label class="sr-only" for="form-name">Your name</label>
-                        <input type="text" name="form-name" placeholder="Your name" class="form-name form-control"
+                        <input type="text" ng-model="comment.username" name="form-name" placeholder="Your name" class="form-name form-control"
                                id="form-name">
                     </div>
                     <div class="form-group">
                         <label class="sr-only" for="form-title">Title</label>
-                        <input type="text" name="form-title" placeholder="Title..." class="form-title form-control"
+                        <input type="text" ng-model="comment.title" name="form-title" placeholder="Title..." class="form-title form-control"
                                id="form-title">
                     </div>
                     <div class="form-group">
                         <label class="sr-only" for="form-comment">Your comment</label>
-                                            <textarea name="form-comment" placeholder="Your comment..."
+                                            <textarea name="form-comment" ng-model="comment.body" placeholder="Your comment..."
                                                       class="form-comment form-control" id="form-comment"></textarea>
                     </div>
-                    <button type="submit" class="btn">Submit!</button>
+                    <button ng-click="sendComment(comment)" class="btn">Submit!</button>
                 </form>
             </div>
         </div>
