@@ -3,6 +3,9 @@ import com.cityhospital.backend.Doctor
 import com.cityhospital.backend.DoctorCategory
 import com.cityhospital.backend.HospitalInfo
 
+/**
+ * Created by Slawa on 03.05.2016.
+ */
 class BootStrap {
 
     def randomUsersService
