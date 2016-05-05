@@ -11,11 +11,10 @@
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="bower_components/angular-toastr/dist/angular-toastr.css" rel="stylesheet"/>
 
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="components/module.js"></script>
 </head>
-<body ng-app="hospitalFrontend">
+<body ng-app="hospitalFrontend" ng-controller="doctorsController" ng-init="loadDoctors()">
 
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
@@ -48,45 +47,21 @@
 </div>
 
 <div id="doctorwrap">
-    <div class="doctor-centered">
-        <h3>Our Personnel.</h3>
+    <div class="doctor-centered" ng-repeat="(categoryName, doctors) in allDoctors | groupBy:'categoryName'">
 
-        <div class="recentitems doctor">
+        <div class="row">
+            <h3>{{categoryName}}.</h3>
+        </div>
 
-            <div class="doctor-item">
+        <div class="row recentitems doctor">
+
+            <div class="col-lg-3 doctor-item" ng-repeat="doctor in doctors">
                 <div class="tpl6">
-                    <img class="doctor-image" src="assets/img/userpic.png" alt="">
-                    <h4>Doctor name</h4>
+                    <img class="doctor-image" ng-src="{{doctor.picture}}" alt="{{doctor.name}}">
+                    <h4>{{doctor.name}}</h4>
                 </div>
             </div>
 
-            <div class="doctor-item">
-                <div class="tpl6">
-                    <img class="doctor-image" src="assets/img/userpic.png" alt="">
-                    <h4>Doctor name</h4>
-                </div>
-            </div>
-
-            <div class="doctor-item">
-                <div class="tpl6">
-                    <img class="doctor-image" src="assets/img/userpic.png" alt="">
-                    <h4>Doctor name</h4>
-                </div>
-            </div>
-
-            <div class="doctor-item">
-                <div class="tpl6">
-                    <img class="doctor-image" src="assets/img/userpic.png" alt="">
-                    <h4>Doctor name</h4>
-                </div>
-            </div>
-
-            <div class="doctor-item">
-                <div class="tpl6">
-                    <img class="doctor-image" src="assets/img/userpic.png" alt="">
-                    <h4>Doctor name</h4>
-                </div>
-            </div>
         </div>
 
     </div>
@@ -97,92 +72,10 @@
 <!-- ================================================== -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/retina-1.1.0.js"></script>
-<script src="assets/js/jquery.hoverdir.js"></script>
-<script src="assets/js/jquery.hoverex.min.js"></script>
-<script src="assets/js/jquery.isotope.min.js"></script>
-<script src="assets/js/custom.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-filter/dist/angular-filter.js"></script>
+<script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+<script src="components/module.js"></script>
 
-
-<script>
-    (function ($) {
-        "use strict";
-        var $container = $('.doctor'),
-                $items = $container.find('.doctor-item'),
-                doctorLayout = 'fitRows';
-
-        if ($container.hasClass('doctor-centered')) {
-            doctorLayout = 'masonry';
-        }
-
-        $container.isotope({
-            filter: '*',
-            animationEngine: 'best-available',
-            layoutMode: doctorLayout,
-            animationOptions: {
-                duration: 750,
-                easing: 'linear',
-                queue: false
-            },
-            masonry: {}
-        }, refreshWaypoints());
-
-        function refreshWaypoints() {
-            setTimeout(function () {
-            }, 1000);
-        }
-
-        $('nav.doctor-filter ul a').on('click', function () {
-            var selector = $(this).attr('data-filter');
-            $container.isotope({filter: selector}, refreshWaypoints());
-            $('nav.doctor-filter ul a').removeClass('active');
-            $(this).addClass('active');
-            return false;
-        });
-
-        function getColumnNumber() {
-            var winWidth = $(window).width(),
-                    columnNumber = 1;
-
-            if (winWidth > 1200) {
-                columnNumber = 5;
-            } else if (winWidth > 950) {
-                columnNumber = 4;
-            } else if (winWidth > 600) {
-                columnNumber = 3;
-            } else if (winWidth > 400) {
-                columnNumber = 2;
-            } else if (winWidth > 250) {
-                columnNumber = 1;
-            }
-            return columnNumber;
-        }
-
-        function setColumns() {
-            var winWidth = $(window).width(),
-                    columnNumber = getColumnNumber(),
-                    itemWidth = Math.floor(winWidth / columnNumber);
-
-            $container.find('.doctor-item').each(function () {
-                $(this).css({
-                    width: itemWidth + 'px'
-                });
-            });
-        }
-
-        function setDoctor() {
-            setColumns();
-            $container.isotope('reLayout');
-        }
-
-        $container.imagesLoaded(function () {
-            setDoctor();
-        });
-
-        $(window).on('resize', function () {
-            setDoctor();
-        });
-    })(jQuery);
-</script>
 </body>
 </html>

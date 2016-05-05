@@ -253,6 +253,9 @@ a:focus {
 
 .doctor-image {
     padding: 20px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
 }
 
 .tpl6 h3 {

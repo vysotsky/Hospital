@@ -14,7 +14,7 @@ class Comment {
     static constraints = {
         username blank: false, nullable: false, notEqual: 'admin'
         picture blank: false, nullable: false
-        title blank: false, nullable: false, minSize: 25
+        title blank: false, nullable: false
         body blank: false, nullable: false
     }
 

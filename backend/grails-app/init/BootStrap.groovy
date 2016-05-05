@@ -22,7 +22,7 @@ class BootStrap {
         def categories = ["Cardiology", "Dietology", "Hematology"]
         categories.each {
             def category = new DoctorCategory(name: it).save(false)
-            for (i in 0..<10) {
+            for (i in 0..<8) {
                 def randomUser = randomUsersService.fetchNewRandomUser()
                 new Doctor(
                         name: randomUser.name,

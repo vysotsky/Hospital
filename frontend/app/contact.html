@@ -11,11 +11,10 @@
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="bower_components/angular-toastr/dist/angular-toastr.css" rel="stylesheet"/>
 
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="components/module.js"></script>
 </head>
-<body ng-app="hospitalFrontend">
+<body ng-app="hospitalFrontend" ng-controller="contactController">
 
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
@@ -59,22 +58,22 @@
                 industry's standard dummy text ever since the 1500s.</p>
             <form role="form">
                 <div class="form-group">
-                    <label for="InputName1">Your Name</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1">
+                    <label>Your Name</label>
+                    <input class="form-control"  ng-model="contact.name">
                 </div>
                 <div class="form-group">
-                    <label for="InputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1">
+                    <label>Email address</label>
+                    <input type="email" ng-model="contact.email" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="InputSubject1">Subject</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1">
+                    <label>Subject</label>
+                    <input ng-model="contact.subject" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="message1">Message</label>
-                    <textarea class="form-control" id="message1" rows="3"></textarea>
+                    <textarea class="form-control" id="message1" ng-model="contact.message" rows="3"></textarea>
                 </div>
-                <button type="submit" class="btn btn-theme">Submit</button>
+                <button type="submit" ng-click="sendContactRequest(contact)" class="btn btn-theme">Submit</button>
             </form>
         </div>
         <div class="col-lg-4">
@@ -101,12 +100,10 @@
 <!-- ================================================== -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/retina-1.1.0.js"></script>
-<script src="assets/js/jquery.hoverdir.js"></script>
-<script src="assets/js/jquery.hoverex.min.js"></script>
-<script src="assets/js/jquery.isotope.min.js"></script>
-<script src="assets/js/custom.js"></script>
-
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-filter/dist/angular-filter.js"></script>
+<script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+<script src="components/module.js"></script>
 
 </body>
 </html>
