@@ -13,11 +13,11 @@ class BootStrap {
     def init = { servletContext ->
         new HospitalInfo(
                 title: "More About Our Agency.",
-                about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.\n" +
+                about: "A hospital is a health care institution providing patient treatment with specialized staff and equipment. The best-known type of hospital is the general hospital, which has an emergency department. A district hospital typically is the major health care facility in its region, with large numbers of beds for intensive care and long-term care. Specialised hospitals include trauma centres, rehabilitation hospitals, children's hospitals, seniors' (geriatric) hospitals, and hospitals for dealing with specific medical needs such as psychiatric problems (see psychiatric hospital) and certain disease categories. Specialised hospitals can help reduce health care costs compared to general hospitals.\n" +
                         "\n" +
-                        "It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n" +
+                        "A teaching hospital combines assistance to people with teaching to medical students and nurses. The medical facility smaller than a hospital is generally called a clinic. Hospitals have a range of departments (e.g.: surgery and urgent care) and specialist units such as cardiology. Some hospitals have outpatient departments and some have chronic treatment units. Common support units include a pharmacy, pathology, and radiology.\n" +
                         "\n" +
-                        "Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source."
+                        "Hospitals are usually funded by the public sector, by health organisations (for profit or nonprofit), by health insurance companies, or by charities, including direct charitable donations. Historically, hospitals were often founded and funded by religious orders or charitable individuals and leaders."
         ).save(false)
         def categories = ["Cardiology", "Dietology", "Hematology"]
         categories.each {

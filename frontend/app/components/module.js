@@ -37,6 +37,13 @@
                 }
             };
         }])
+        .factory('About', ['$http', function ($http) {
+            return {
+                info: function () {
+                    return $http.get('http://localhost:8080/about');
+                }
+            };
+        }])
         .controller('commentsController', ['$scope', 'Comments', function ($scope, Comments) {
             $scope.loadComments = function () {
                 Comments.list().then(function (res) {
@@ -73,5 +80,12 @@
                 });
             };
             $scope.itemWidth = (Math.floor($window.innerWidth / 5) - 30) + 'px';
+        }])
+        .controller('aboutController', ['$scope', 'About', function ($scope, About) {
+            $scope.loadAbout = function () {
+                About.info().then(function (res) {
+                    $scope.about = res.data;
+                });
+            };
         }]);
 })(window.angular)
